@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 #ruby-gemset=speakerinnen_rails_3
-gem 'rails', '4.0.0'
+gem 'rails', '4.1.5'
 gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'normalize-rails'
 gem 'bootswatch-rails'
