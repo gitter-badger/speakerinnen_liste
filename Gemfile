@@ -31,8 +31,10 @@ gem 'globalize', '~> 4.0.2'
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
 
 gem 'sass-rails',   '~> 4.0.3'
+gem 'autoprefixer-rails'
 gem 'coffee-rails', '~> 4.0.1'
 gem 'uglifier', '>= 1.0.3'
+gem 'turbolinks'
 
 # Use unicorn as the app server
 gem 'unicorn'
