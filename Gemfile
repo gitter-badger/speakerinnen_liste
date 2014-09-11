@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
-#ruby-gemset=speakerinnen_rails_3
+#ruby-gemset=rails4.1
 gem 'rails', '4.1.5'
 gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'normalize-rails'

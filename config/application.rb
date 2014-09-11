@@ -18,6 +18,37 @@ module SpeakerinnenListe
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.default_locale = :de
+
+    # globlalize fallback
+    config.i18n.fallbacks = {'de' => 'en', 'en' => 'de'}
+    config.i18n.available_locales = [:en, :de]
+
+    config.i18n.enforce_available_locales = true
+    # or if one of your gem compete for pre-loading, use
+    I18n.config.enforce_available_locales = true
+
+    # Configure the default encoding used in templates for Ruby 1.9.
+    config.encoding = "utf-8"
+
+    # Configure sensitive parameters which will be filtered from the log file.
+    config.filter_parameters += [:password]
+
+    # Enable escaping HTML in JSON.
+    config.active_support.escape_html_entities_in_json = true
+
+    # Use SQL instead of Active Record's schema dumper when creating the database.
+    # This is necessary if your schema can't be completely dumped by the schema dumper,
+    # like if you have constraints or database-specific column types
+    config.active_record.schema_format = :sql
+
+
+    # forcing your application to not access the DB or load models when precompiling your assets
+    #config.assets.initialize_on_precompile = false
+
+
+    # Version of your assets, change this if you want to expire all your assets
+    #config.assets.version = '1.0'
+
   end
 end
