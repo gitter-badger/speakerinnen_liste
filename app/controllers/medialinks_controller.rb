@@ -1,4 +1,5 @@
 class MedialinksController < ApplicationController
+  before_action :set_medialink, only: [:edit, :update, :destroy]
 
   before_filter :fetch_profile_from_params
   before_filter :ensure_own_medialinks
@@ -12,12 +13,12 @@ class MedialinksController < ApplicationController
   end
 
   def edit
-    @medialink = @profile.medialinks.find(params[:id])
+    #@medialink = @profile.medialinks.find(params[:id])
   end
 
   def update
-    @medialink = @profile.medialinks.find(params[:id])
-    if @medialink.update_attributes(params[:medialink])
+    #@medialink = @profile.medialinks.find(params[:id])
+    if @medialink.update_attributes(medialink_params)
       # TODO translation flash
       redirect_to profile_medialinks_path(@profile), notice: (I18n.t("flash.medialink.updated"))
     else
@@ -26,14 +27,14 @@ class MedialinksController < ApplicationController
   end
 
   def destroy
-    @medialink = @profile.medialinks.find(params[:id])
+    #@medialink = @profile.medialinks.find(params[:id])
     @medialink.destroy
       # TODO translation flash
     redirect_to profile_medialinks_path(@profile), notice: (I18n.t("flash.medialink.destroyed"))
   end
 
   def create
-    @medialink = @profile.medialinks.build(params[:medialink])
+    @medialink = @profile.medialinks.build(medialink_params)
     if @medialink.save
       # TODO translation flash
       flash[:notice] = (I18n.t("flash.medialink.created"))
@@ -63,4 +64,15 @@ class MedialinksController < ApplicationController
       redirect_to root_path, notice: 'Sorry, but you can not edit other peoples medialinks. OK?'
     end
   end
+
+  private
+
+  def set_medialink
+    @medialink = @profile.medialinks.find(params[:id])
+  end
+
+  def medialink_params
+    params.require(:medialink).permit(:url, :title, :description)
+  end
+
 end

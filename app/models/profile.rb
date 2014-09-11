@@ -18,12 +18,12 @@ class Profile < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :bio, :city, :email, :firstname, :languages, :lastname, :picture, :twitter, :remove_picture, :talks, :website
-  attr_accessible :content, :name, :topic_list, :media_url, :medialinks, :main_topic
-  attr_accessible :translations_attributes
-  attr_accessible :admin_comment
+  ## Setup accessible (or protected) attributes for your model
+  #attr_accessible :email, :password, :password_confirmation, :remember_me
+  #attr_accessible :bio, :city, :email, :firstname, :languages, :lastname, :picture, :twitter, :remove_picture, :talks, :website
+  #attr_accessible :content, :name, :topic_list, :media_url, :medialinks, :main_topic
+  #attr_accessible :translations_attributes
+  #attr_accessible :admin_comment
 
   acts_as_taggable_on :topics
 
