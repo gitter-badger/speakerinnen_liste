@@ -40,6 +40,7 @@ class Admin::TagsController < Admin::BaseController
 
   def categorization
     relation = ActsAsTaggableOn::Tag.order('tags.name ASC').page(params[:page]).per(20)
+
     @tags_count = ActsAsTaggableOn::Tag.count
     if (params[:category_id]).present?
       @tags       = relation.includes(:categories).where('categories.id = ?', params[:category_id])

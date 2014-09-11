@@ -2,7 +2,7 @@
   <div class="curie-badge">
     <%= image_tag("badge2-bw.png", alt: "curie-badge") %>
   </div>
-  <script> 
+  <script>
     if ($(window).width() <= 980 && $(window).height() <= 1500){
       $(".curie-badge").hide();
     }
@@ -30,8 +30,8 @@
     <h2 class="text-white-bg"><%= t(:tagline, scope: "pages.home.search") %></h2>
     <br/>
     <h2 class="text-white-bg">
-      <%= form_tag(search_path, method: "get", class:"well") do %>
-        <%= text_field_tag(:q, nil, class: "", id: "search-field", placeholder: t(:search_text, scope: "pages.home.search")) %>
+      <%= form_tag(search_path, method: "get", class:"form-inline well") do %>
+        <%= text_field_tag(:q, nil, class: "form-control", id: "search-field", placeholder: t(:search_text, scope: "pages.home.search")) %>
         <%= button_tag((t(:search, scope: "pages.home.search")), class: "btn btn-large") %>
       <% end %>
       <%= link_to t(:categories, scope: "pages.home.speakers"), "#categories_anker" %>

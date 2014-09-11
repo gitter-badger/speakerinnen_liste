@@ -299,7 +299,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 3.4.1)
   auto_html!
   autoprefixer-rails
-  bootstrap-sass (~> 3.2.0.2)
+  bootstrap-sass (~> 3.2.0)
   bootswatch-rails
   capybara (~> 2.0.2)
   carrierwave
