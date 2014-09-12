@@ -4,7 +4,7 @@ class Medialink < ActiveRecord::Base
   #attr_accessible :url, :title, :description
   belongs_to :profile
 
-  validates :title,:url, presence: true
+  validates :title, :url, presence: true
 
   auto_html_for :url do
     html_escape

@@ -26,11 +26,12 @@ class MedialinksController < ApplicationController
     end
   end
 
+  respond_to :json, :html
   def destroy
     #@medialink = @profile.medialinks.find(params[:id])
     @medialink.destroy
       # TODO translation flash
-    redirect_to profile_medialinks_path(@profile), notice: (I18n.t("flash.medialink.destroyed"))
+    respond_with nil
   end
 
   def create
@@ -72,7 +73,7 @@ class MedialinksController < ApplicationController
   end
 
   def medialink_params
-    params.require(:medialink).permit(:url, :title, :description)
+    params.require(:medialink).permit(:url, :title, :description, :position)
   end
 
 end
