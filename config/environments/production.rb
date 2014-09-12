@@ -72,6 +72,29 @@ SpeakerinnenListe::Application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
+  config.action_mailer.default_url_options = { host: 'speakerinnen.org'}
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.raise_delivery_errors = false
+
+  config.action_mailer.default charset: "utf-8"
+
+  config.action_mailer.smtp_settings = {
+   port: '587',
+   address: 'smtp.mandrillapp.com',
+   user_name: ENV['MANDRILL_USERNAME'],
+   password: ENV['MANDRILL_APIKEY'],
+   domain: 'heroku.com',
+   authentication: :plain
+   }
+
+# piwik data collection and analytics
+  config.gem 'rack-piwik', lib: 'rack/piwik'
+  config.middleware.use Rack::Piwik, piwik_url: 'speaki.hadar.uberspace.de/piwik', piwik_id: '1', disable_cookies: false
+
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 
