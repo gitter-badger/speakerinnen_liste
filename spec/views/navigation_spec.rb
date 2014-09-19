@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 shared_examples_for "successful sign in" do
-  it { should have_content(I18n.t("devise.sessions.signed_in")) }
-  it { should have_link(I18n.t("layouts.application.logout"),destroy_profile_session_path) }
+  it { is_expected.to have_content(I18n.t("devise.sessions.signed_in")) }
+  it { is_expected.to have_link(I18n.t("layouts.application.logout"),destroy_profile_session_path) }
 end
 
-describe "navigation" do
+describe "navigation", :type => :view do
   subject { page }
 
   before do
@@ -23,7 +23,7 @@ describe "navigation" do
         sign_in user, language
       end
       it_should_behave_like "successful sign in"
-      it { should have_no_link('Admin', admin_root_path) }
+      it { is_expected.to have_no_link('Admin', admin_root_path) }
 
       #When you go to the start page
       #You can't see the admin link
@@ -35,13 +35,13 @@ describe "navigation" do
         sign_in user, language
       end
       it_should_behave_like "successful sign in"
-      it { should have_link('Admin', admin_root_path) }
+      it { is_expected.to have_link('Admin', admin_root_path) }
 
       describe "access admin actions" do
         #binding.pry
         before { click_on 'Admin' }
         #find(:xpath, "//a[contains(@href,'#{admin_root_path}')]").click
-        it { should have_content('Administration') }
+        it { is_expected.to have_content('Administration') }
         it "should have localized links" do
           @lang_links_map[language].each_with_index do |link, index|
             expect(page).to have_link(link, @links_array[index])
