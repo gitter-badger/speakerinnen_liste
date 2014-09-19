@@ -48,8 +48,8 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '2.99'
-  gem 'capybara', '~> 2.0.2'
+  gem 'rspec-rails', '3.1.0'
+  gem 'capybara', '~> 2.4.1'
   gem 'cucumber-rails', '1.4.0', require: false
   gem 'pry'
   gem 'selenium-webdriver', "2.38.0"
@@ -57,6 +57,6 @@ end
 
 group :test do
   gem 'factory_girl_rails', '4.1.0'
-  gem 'poltergeist'
+  gem 'poltergeist', '1.5.1'
   gem 'database_cleaner', '~> 1.2.0'
 end
