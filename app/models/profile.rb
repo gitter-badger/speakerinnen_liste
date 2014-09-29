@@ -10,7 +10,7 @@ class Profile < ActiveRecord::Base
     youtube width: 400, height: 250
     vimeo width: 400, height: 250
     simple_format
-    link target: "_blank", rel: "nofollow"
+    link target: '_blank', rel: 'nofollow'
   end
 
   devise :database_authenticatable, :registerable, :omniauthable,
@@ -38,7 +38,7 @@ class Profile < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |profile|
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |profile|
       profile.provider = auth.provider
       profile.uid = auth.uid
       profile.twitter = auth.info.nickname
@@ -46,8 +46,8 @@ class Profile < ActiveRecord::Base
   end
 
   def self.new_with_session(params, session)
-    if session["devise.user_attributes"]
-      new(session["devise.user_attributes"], without_protection: true) do |profile|
+    if session['devise.user_attributes']
+      new(session['devise.user_attributes'], without_protection: true) do |profile|
         profile.attributes = params
         profile.valid?
       end
@@ -70,13 +70,13 @@ class Profile < ActiveRecord::Base
 
   def language(translation)
     if translation.object.locale == :en && I18n.locale == :de
-      "Englisch"
+      'Englisch'
     elsif translation.object.locale == :en && I18n.locale == :en
-      "English"
+      'English'
     elsif translation.object.locale == :de && I18n.locale == :en
-      "German"
+      'German'
     else
-      "Deutsch"
+      'Deutsch'
     end
   end
 
@@ -93,11 +93,11 @@ class Profile < ActiveRecord::Base
   end
 
   def twitter_link_formatted
-    "http://twitter.com/"  + twitter.gsub(/^@|https:|http:|:|\/\/|www.|twitter.com\//, '')
+    'http://twitter.com/'  + twitter.gsub(/^@|https:|http:|:|\/\/|www.|twitter.com\//, '')
   end
 
   def self.random
-    order("RANDOM()")
+    order('RANDOM()')
   end
 
   def password_required?
