@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TagTest < ActionController::IntegrationTest
+class TagIntegrationTest < ActionDispatch::IntegrationTest
   def setup
     @horst = profiles(:one)
     @horst.confirmed_at = Time.now
@@ -28,12 +28,12 @@ class TagTest < ActionController::IntegrationTest
     click_button "Anmelden"
 
     visit profile_path(@horst, locale: "de")
-    click_link('Profil bearbeiten')
+    first('.main-action').click_link('Profil bearbeiten')
     assert_equal find_field('profile[topic_list]').value, 'fruehling'
   end
 
-  #we comment this test out because it would be too performance consuming to either add the selection 
-  #of only tags from published profiles in the profiles controller or too time consuming to adapt the test cases  
+  #we comment this test out because it would be too performance consuming to either add the selection
+  #of only tags from published profiles in the profiles controller or too time consuming to adapt the test cases
   # test "show only tags from published Profile" do
   #   visit '/profiles'
   #   # save_and_open_page
@@ -51,6 +51,6 @@ class TagTest < ActionController::IntegrationTest
     within ".topics-cloud" do
       click_link('fruehling')
     end
-    assert page.has_css?('div.name', count: 2)
+    assert page.has_css?('div.speaker', count: 2)
   end
 end
