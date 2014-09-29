@@ -53,20 +53,22 @@ class ProfilesController < ApplicationController
   def update
     medialinks = params[:medialinks]
     all_medialinks_saved_successfully = true
-    medialinks.each_with_index do |medialink, position|
-      medialink[:position] = position
-      if medialink[:id]
-        unless Medialink.find(medialink[:id]).update_attributes(medialink)
+    if medialinks
+      medialinks.each_with_index do |medialink, position|
+        medialink[:position] = position
+        if medialink[:id]
+          unless Medialink.find(medialink[:id]).update_attributes(medialink)
+            all_medialinks_saved_successfully = false
+          end
+        else
+          unless @profile.medialinks.build(medialink).save
           all_medialinks_saved_successfully = false
-        end
-      else
-        unless @profile.medialinks.build(medialink).save
-        all_medialinks_saved_successfully = false
+          end
         end
       end
     end
 
-    if @profile.update_attributes(params[:profile]) && all_medialinks_saved_successfully
+    if @profile.update_attributes(profile_params) && all_medialinks_saved_successfully
       redirect_to @profile, notice: (I18n.t("flash.profiles.updated"))
     else current_profile
       #build_missing_translations(@profile)
