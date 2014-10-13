@@ -1,10 +1,10 @@
-<div class="full-width-container">
-  <div class="full-width-row administration">
+<div class='full-width-container'>
+  <div class='full-width-row administration'>
 
-    <div class="breadcrumb-navigation">Administration::<%= t(:tags, scope: 'admin.dashboard.tags')%></div>
+    <div class='breadcrumb-navigation'>Administration::<%= t(:tags, scope: 'admin.dashboard.tags')%></div>
 
     <%= render partial: 'filter' %>
-    <div class="text-center">
+    <div class='text-center'>
       <% if @tags_count %>
         <strong>
           <%= t(:tags_here_are, scope: 'admin.dashboard.tags') + @tags.total_count.to_s + t(:tags_of, scope: 'admin.dashboard.tags') + @tags_count.to_s + ' tags.' %>
@@ -16,7 +16,7 @@
       <% end %>
     </div>
 
-    <div class="text-center">
+    <div class='text-center'>
       <%= paginate @tags %>
     </div>
 
@@ -41,14 +41,15 @@
               <% end %>
             </td>
             <td>
-              <%= link_to "<i class='glyphicon glyphicon-trash'></i>".html_safe, admin_tag_path(tag.id),
-              method: :delete, confirm: "Do you want to delete the tag #{tag.name}?" %>
+              <%= link_to admin_tag_path(tag.id), method: :delete, data: { confirm: 'Are you sure?',toggle: 'tooltip', placement: 'left' }, class: 'btn btn-default', title: 'Delete' do %>
+                <span class='glyphicon glyphicon-trash'></span>
+              <% end %>
             </td>
           </tr>
         <% end %>
       </table>
 
-    <div class="text-center">
+    <div class='text-center'>
       <%= paginate @tags %>
     </div>
 
