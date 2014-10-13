@@ -43,13 +43,13 @@ class Admin::TagsController < Admin::BaseController
 
     @tags_count = ActsAsTaggableOn::Tag.count
     if (params[:category_id]).present?
-      @tags       = relation.includes(:categories).where('categories.id = ?', params[:category_id])
+      @tags       = relation.includes(:categories).where('categories.id = ?', params[:category_id]).references(:categories)
     elsif (params[:q]).present? && (params[:uncategorized]).present?
       @tags       = relation.where('tags.name ILIKE ?', '%' + params[:q] + '%').includes(:categories).where('categories.id IS NULL')
     elsif (params[:q]).present?
       @tags       = relation.where('tags.name ILIKE ?', '%' + params[:q] + '%')
     elsif (params[:uncategorized]).present?
-      @tags       = relation.includes(:categories).where('categories.id IS NULL')
+      @tags       = relation.includes(:categories).where('categories.id IS NULL').references(:categories)
     else
       @tags = relation
       @tags_count = nil
