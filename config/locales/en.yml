@@ -348,3 +348,4 @@ Links to Youtube videos will be shown as embedded videos. Other links will be cl
       one: "1 result! Yeah!",
       other: "%{count} results! Yeah!"
     }
+

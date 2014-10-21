@@ -40,7 +40,7 @@ de:
         tags: "Tags"
         tags_of: " von "
         tags_here_are: "Du siehst "
-        tags_search: "Suche nach einem bestimmtem Tag:"
+        tags_search: "Suche nach einem bestimmtem tag:"
         tags_count: "Die Anzahl aller tags ist "
         tags_filter_option: "Alle Tags ohne Kategorien"
         tags_filter_default: "Alle Kategorien auswählen"

@@ -8,7 +8,7 @@ module SignInHelper
         end
         fill_in "profile[email]", with: user.email
         fill_in "profile[password]", with: user.password
-        click_button I18n.t("devise.sessions.new.login")
+        click_button I18n.t("devise.registrations.signin")
     end
 end
 

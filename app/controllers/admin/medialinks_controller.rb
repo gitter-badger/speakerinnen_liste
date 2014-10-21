@@ -1,4 +1,5 @@
 class Admin::MedialinksController < Admin::BaseController
+  before_action :set_medialink, only: [:edit, :update, :destroy]
 
   before_filter :fetch_profile_from_params
 
@@ -11,12 +12,12 @@ class Admin::MedialinksController < Admin::BaseController
   end
 
   def edit
-    @medialink = @profile.medialinks.find(params[:id])
+    #@medialink = @profile.medialinks.find(params[:id])
   end
 
   def update
-    @medialink = @profile.medialinks.find(params[:id])
-    if @medialink.update_attributes(params[:medialink])
+    #@medialink = @profile.medialinks.find(params[:id])
+    if @medialink.update_attributes(medialink_params)
       # TODO translation flash
       redirect_to admin_profile_medialinks_path(@profile), notice: (I18n.t("flash.medialink.updated"))
     else
@@ -25,14 +26,14 @@ class Admin::MedialinksController < Admin::BaseController
   end
 
   def destroy
-    @medialink = @profile.medialinks.find(params[:id])
+    #@medialink = @profile.medialinks.find(params[:id])
     @medialink.destroy
       # TODO translation flash
     redirect_to admin_profile_medialinks_path(@profile), notice: (I18n.t("flash.medialink.destroyed"))
   end
 
   def create
-    @medialink = @profile.medialinks.build(params[:medialink])
+    @medialink = @profile.medialinks.build(medialink_params)
     if @medialink.save
       # TODO translation flash
       flash[:notice] = (I18n.t("flash.medialink.created"))
@@ -49,5 +50,16 @@ class Admin::MedialinksController < Admin::BaseController
   def fetch_profile_from_params
     @profile = Profile.find(params[:profile_id])
   end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_medialink
+      @medialink = @profile.medialinks.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def medialink_params
+      params.require(:medialink).permit(:url, :title, :description)
+    end
 
 end

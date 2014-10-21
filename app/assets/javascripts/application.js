@@ -16,6 +16,9 @@
 //= require bootstrap/modal
 //= require tag-it/tag-it
 //= require_tree .
+//= require turbolinks
+//= require bootstrap-sprockets
+//
 addMandatoryMarkers = function() {
   var mandatoryElements = $('.mandatory');
   for (var i = 0; i < mandatoryElements.length; i++) {

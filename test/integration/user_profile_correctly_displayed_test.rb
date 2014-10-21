@@ -20,7 +20,7 @@ class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
     click_link('Horst lastname')
 
     assert page.has_css?('h1', count: 1), 'one headline of the fullname'
-    assert page.has_content?('My topics')
+    assert page.has_content?('Topics')
     assert page.has_content?('Bio')
     assert page.has_content?('Twitter')
   end
@@ -30,7 +30,7 @@ class UserProfileCorrectlyDisplayedTest < ActionDispatch::IntegrationTest
     click_link('Inge lastname')
 
     assert page.has_css?('h1', count: 1), 'one headline of the fullname'
-    assert page.has_content?('Meine Themen')
+    assert page.has_content?('Themen')
     assert page.has_content?('Bio')
     assert page.has_content?('Twitter')
   end
