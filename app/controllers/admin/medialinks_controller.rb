@@ -59,7 +59,7 @@ class Admin::MedialinksController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def medialink_params
-      params.require(:medialink).permit(:url, :title, :description)
+      params.require(:medialink).permit(:url, :title, :description, :position)
     end
 
 end

@@ -1,8 +1,9 @@
 class MedialinksController < ApplicationController
+  before_action :fetch_profile_from_params
+  before_action :ensure_own_medialinks
+
   before_action :set_medialink, only: [:edit, :update, :destroy]
 
-  before_filter :fetch_profile_from_params
-  before_filter :ensure_own_medialinks
 
   def index
     @medialinks = @profile.medialinks.order(:position)
@@ -31,7 +32,7 @@ class MedialinksController < ApplicationController
     #@medialink = @profile.medialinks.find(params[:id])
     @medialink.destroy
       # TODO translation flash
-    respond_with nil
+    redirect_to profile_medialinks_path(@profile), notice: (I18n.t('flash.medialink.destroyed'))
   end
 
   def create
@@ -63,6 +64,8 @@ class MedialinksController < ApplicationController
   def ensure_own_medialinks
     if @profile != current_profile
       redirect_to root_path, notice: 'Sorry, but you can not edit other peoples medialinks. OK?'
+    else
+      true
     end
   end
 

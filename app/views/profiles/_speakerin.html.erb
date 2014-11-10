@@ -251,6 +251,15 @@
         </div>
       <% end %>
     <% end %>
+ <% if current_profile == @profile %>
+        <%= link_to(profile_medialinks_path(@profile)) do %>
+          <div class="btn  btn-large buttons-modals btn-info">
+            <span class="icon icon-edit icon-white"></span>
+            <%= t(:edit, scope: "profiles.medialinks") %>
+          </div>
+        <% end %>
+      <% end %>
+
 
   </div>
 </div>
