@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
-#ruby-gemset=rails4.1
+#ruby-gemset=speakerinnen_rails_4.1
 
 gem 'rails', '4.1.5'
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -27,6 +27,7 @@ gem 'jquery-ui-rails'
 gem 'acts-as-taggable-on', '~> 3.4.1'
 gem 'auto_html', github: 'dejan/auto_html'
 gem 'mandrill-api'
+
 gem 'simple_form', '~> 3.0.2'
 gem 'globalize', '~> 4.0.2'
 gem 'rack-piwik', '~> 0.3.0', require: 'rack/piwik'
