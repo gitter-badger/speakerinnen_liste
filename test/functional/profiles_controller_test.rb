@@ -15,6 +15,8 @@ class ProfilesControllerTest < ActionController::TestCase
   end
 
   test "should show published profile" do
+    @profile.published = true
+    @profile.save
     get :show, id: @profile.id
     assert_response :success
   end
