@@ -50,7 +50,7 @@ class MedialinksController < ApplicationController
 
   def sort
     params[:medialink].each_with_index do |id, index|
-      Medialink.update_all({position: index+1}, {id: id})
+      Medialink.where(id: id).update_all(position: index+1)
     end
     render nothing: true
   end
