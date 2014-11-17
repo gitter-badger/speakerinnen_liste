@@ -16,7 +16,6 @@
 //= require bootstrap/modal
 //= require tag-it/tag-it
 //= require_tree .
-//= require turbolinks
 //= require bootstrap-sprockets
 //
 addMandatoryMarkers = function() {
