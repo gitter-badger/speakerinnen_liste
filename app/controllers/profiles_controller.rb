@@ -51,17 +51,17 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    medialinks = params[:medialinks]
+    #medialinks = params[:medialinks]
     all_medialinks_saved_successfully = true
-    if medialinks
-      medialinks.each_with_index do |medialink, position|
+    if params[:medialinks]
+      params[:medialinks].each_with_index do |medialink, position|
         medialink[:position] = position
         if medialink[:id]
-          unless Medialink.find(medialink[:id]).update_attributes(medialink)
+          unless Medialink.find(medialink[:id]).update_attributes(medialink.permit(:title, :url, :description, :position))
             all_medialinks_saved_successfully = false
           end
         else
-          unless @profile.medialinks.build(medialink).save
+          unless @profile.medialinks.build(medialink.permit(:title, :url, :description, :position)).save
           all_medialinks_saved_successfully = false
           end
         end
