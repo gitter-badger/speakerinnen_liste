@@ -2,6 +2,7 @@
 <%
     translated_items = {:bio => :text_area, :main_topic => :text_field }
     mandatory_translated_items = { :main_topic => true}
+    items_required_for_publishing = { :bio => true, :main_topic => true}
 
     # a translatable item can be accessed as translatable_fields[locale][item][field]
     # where field can be :hidden_field, :label and :input_field
@@ -19,10 +20,11 @@
             label: translation.label(item, t(locale_sym, scope: "languages"), class: css_class)
 
         }
+        placeholder_text = t('required_placeholder', scope: "profiles.speakerin")
         if input_field_type == :text_area
-          translatable_fields[locale_sym][item][:input_field] = translation.text_area(item, rows: 15, class: 'form-control')
+          translatable_fields[locale_sym][item][:input_field] = translation.text_area(item, rows: 15, class: 'form-control', placeholder: placeholder_text)
         elsif
-          translatable_fields[locale_sym][item][:input_field] = translation.text_field(item, class: 'form-control')
+          translatable_fields[locale_sym][item][:input_field] = translation.text_field(item, class: 'form-control', placeholder: placeholder_text)
         end
       end
 

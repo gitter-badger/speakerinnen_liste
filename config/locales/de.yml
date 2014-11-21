@@ -179,6 +179,7 @@ de:
   profiles:
     link_to_all: "Alle Speakerinnen"
     speakerin:
+      required_placeholder: "bitte ausfüllen, damit das Profil veröffentlicht werden kann"
       firstname: "Vorname"
       lastname: "Nachname"
       main_topic: "Hauptthema"
