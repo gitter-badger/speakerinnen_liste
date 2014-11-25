@@ -5,6 +5,8 @@ ActsAsTaggableOn.delimiter = [',', ';']
 
 ActsAsTaggableOn.force_lowercase = true
 
+ActsAsTaggableOn.force_parameterize = true
+
 ActsAsTaggableOn::Tag.class_eval do
   has_and_belongs_to_many :categories
   has_many :profiles

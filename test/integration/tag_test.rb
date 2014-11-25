@@ -18,6 +18,12 @@ class TagTest < ActionController::IntegrationTest
     @anon.confirmed_at = Time.now
     @anon.topic_list = 'winter', 'fruehling'
     @anon.save
+
+    @erwin = profiles(:four)
+    @erwin.confirmed_at = Time.now
+    @erwin.topic_list = 'rot/blau'
+    @inge.published = true
+    @erwin.save
   end
 
   test "show tagging" do
@@ -32,8 +38,8 @@ class TagTest < ActionController::IntegrationTest
     assert_equal find_field('profile[topic_list]').value, 'fruehling'
   end
 
-  #we comment this test out because it would be too performance consuming to either add the selection 
-  #of only tags from published profiles in the profiles controller or too time consuming to adapt the test cases  
+  #we comment this test out because it would be too performance consuming to either add the selection
+  #of only tags from published profiles in the profiles controller or too time consuming to adapt the test cases
   # test "show only tags from published Profile" do
   #   visit '/profiles'
   #   # save_and_open_page
@@ -52,5 +58,14 @@ class TagTest < ActionController::IntegrationTest
       click_link('fruehling')
     end
     assert page.has_css?('div.name', count: 2)
+  end
+
+  test "show rot/blau tag as rot-blau" do
+    visit '/profiles'
+    assert page.has_content?('rot-blau')
+    within ".topics-cloud" do
+      click_link('rot-blau')
+    end
+    assert page.has_css?('div.name', count: 1)
   end
 end

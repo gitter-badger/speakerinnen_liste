@@ -2,7 +2,7 @@
 
 one:
   firstname: Horst
-  lastname: lastname
+  lastname: Horstlastname
   email: horst@mail.de
   encrypted_password: <%= Profile.new.send(:password_digest, 'Testpassword') %>
   languages: Deutsch
@@ -13,7 +13,7 @@ one:
 
 two:
   firstname: Inge
-  lastname: lastname
+  lastname: Ingelastname
   email: inge@mail.de
   languages: Deutsch
   city: Berlin
@@ -22,10 +22,18 @@ two:
 
 three:
   firstname: Anon
-  lastname: lastname
+  lastname: Anonlastname
   email: anon@mail.de
   languages: Deutsch
   city: Hintertupfingen
+  talks:
+
+four:
+  firstname: Erwin
+  lastname: Erwinlastname
+  email: erwin@mail.de
+  languages: Englisch
+  city: London
   talks:
 
 jane:
