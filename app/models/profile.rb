@@ -1,6 +1,9 @@
 class Profile < ActiveRecord::Base
   include AutoHtml
 
+  validates :topic_list, :format => { :with => /\A[^\/\.%]*\z/,
+      :message => "Just too awesomezz" }
+
   translates :bio, :main_topic, fallbacks_for_empty_translations: true
   accepts_nested_attributes_for :translations
 
