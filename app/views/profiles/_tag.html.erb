@@ -16,6 +16,7 @@
 
       // show matching & hide others
       $("#quick-filter").on('input', function(){
+        // TODO: Does not search all tags only visible tags but should search all tags
         var searchString       = $(this).val().toLowerCase();
 
         if (searchString.length > 1) {
