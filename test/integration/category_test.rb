@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TagTest < ActionController::IntegrationTest
+class CategoryTest < ActionController::IntegrationTest
   def setup
     @horst = profiles(:one)
     @horst.confirmed_at = Time.now
@@ -23,7 +23,8 @@ class TagTest < ActionController::IntegrationTest
 
     tag_fruehling.categories << category_jahreszeiten
     tag_sommer.categories << category_jahreszeiten
-    assert_equal ActsAsTaggableOn::Tag.count, 3
+
+    assert_equal ActsAsTaggableOn::Tag.count, 2
     assert_equal tag_fruehling.categories.first.name, "Jahreszeiten"
     # because of the fixtures there are 3 categories
     assert_equal Category.all.count, 3
